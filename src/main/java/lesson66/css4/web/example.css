@@ -1,0 +1,37 @@
+html {
+	font-family: 'Bad Script', cursive;
+	font-size: 40px;
+}
+
+body {
+	padding-left: 100px;
+	min-height: 300%;
+}
+
+#siteHeader {
+	
+}
+
+#paragraph1 {
+	position: relative;
+	left: 50px;
+	top: 5px;
+	color: red;
+	z-index: 100;
+}
+
+.commonContainer {
+	position: relative;
+	z-index: 101;
+}
+
+[name="frame1"] {
+	width: 1400px;
+	height: 900px;
+	float: right;
+}
+
+#link {
+	float: left;
+	width: 250px"
+}

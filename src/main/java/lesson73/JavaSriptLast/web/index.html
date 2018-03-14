@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="2dPlotter.js"></script>
+	<script type="text/javascript">
+	  var plotter = null;
+	  window.onload = function(){
+		  //plotter = new HtmlPlotterClass("Math.sin(x/5)*50", document.getElementById("graphCanvas"));
+		  plotter = new HtmlPlotterClass("Math.random() * 200", document.getElementById("graphCanvas"));
+		  console.log(plotter + " loaded");
+	  };
+	</script>
+</head>
+
+<body >
+    <canvas id="graphCanvas" width='500' height='500'>
+    </canvas>
+    
+    <button onclick="plotter.draw();">Click to call plotter.draw()</button>
+</body>
+</html>

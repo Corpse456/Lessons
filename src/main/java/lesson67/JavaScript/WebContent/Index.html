@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript</title>
+</head>
+<body>
+	<h1>Заголовок страницы</h1>
+	<button onclick="skript();">Запустить скрипт</button>
+	
+</body>
+	<script type="text/javascript">
+		function skript() {
+			var time = performance.now();
+			
+			var a = 4, b = 10, c = -20.0;
+			var d = b * b - 4 * a * c;
+			var x1 = (-b + Math.sqrt(d)) / (2 * a);
+			var x2 = (-b - Math.sqrt(d)) / (2 * a);
+			
+			c = "\nx2 = ";
+			console.log("x1 = " + x1 + c + x2);
+			
+			var array = [2, 3, 7, -1, -7, 15, 4, "-58", "zw", "er", "Al", "pa", "pr", "fyck", "fuck"];
+			for (var j = 0; j < array.length - 1; j++) {
+			    var min = j;
+			    for (var i = j + 1; i < array.length; i++) {
+					if (array[i] < array[min]) {
+					    min = i;
+					}
+			    }
+			    if (min != j) {
+			    	swap (array, min, j);
+			    }
+			}
+			console.log(array);
+			time = performance.now() - time;
+			console.log('Время выполнения = ', time);
+			
+			console.log("Hello, World!");
+			alert("tap");
+		}
+		
+		function swap(massiv, i, j)	{
+			var temp = massiv[i];
+			massiv[i] = massiv[j];
+			massiv[j] = temp;
+		}
+		
+	</script>
+</html>

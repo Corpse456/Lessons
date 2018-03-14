@@ -1,0 +1,34 @@
+* {
+	font-family: 'Coming Soon', cursive;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	background-color: #292929;
+	font-size: 1.5em;
+	color: #dcdcdc;
+	width: 20%;
+}
+
+#forTable {
+	position: relative;
+	padding-bottom: 100%;
+	width: 100%;
+}
+
+table {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+td {
+	background-color: #dcdcdc;
+}
+
+td.black {
+	background-color: #292929;
+}
