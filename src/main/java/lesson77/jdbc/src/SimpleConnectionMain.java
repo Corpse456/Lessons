@@ -10,15 +10,10 @@ public class SimpleConnectionMain {
 
     public static void main(String[] args) throws SQLException {
         String url = "jdbc:postgresql://localhost:5432/eCommercePlatform";
-        Connection connection = DriverManager.getConnection(url, "postgres", "admin");
+        Connection connection = DriverManager.getConnection(url);
         Statement statement = connection.createStatement();
-        ResultSet result = statement.executeQuery("SELECT * FROM users");
-        result.next();
-        System.out.println(result.getString("name"));
-        result.next();
-        System.out.println(result.getString("name"));
-        result.next();
-        System.out.println(result.getString("name"));
+        ResultSet result = statement.executeQuery("SELECT * FROM player");
+        while(result.next()) System.out.println(result.getString("name"));
         
         /*String url = "jdbc:postgresql://localhost/test";
         Properties props = new Properties();
