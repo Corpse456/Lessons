@@ -10,9 +10,11 @@ public class SimpleConnectionMain {
 
     public static void main(String[] args) throws SQLException {
         String url = "jdbc:postgresql://localhost:5432/eCommercePlatform";
-        Connection connection = DriverManager.getConnection(url);
+        Connection connection = DriverManager.getConnection(url, "postgres", "admin");
+        
         Statement statement = connection.createStatement();
         ResultSet result = statement.executeQuery("SELECT * FROM player");
+        
         while(result.next()) System.out.println(result.getString("name"));
         
         /*String url = "jdbc:postgresql://localhost/test";
