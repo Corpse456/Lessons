@@ -1,0 +1,91 @@
+1. Properties: https://docs.oracle.com/javase/7/docs/api/java/util/Properties.html
+
+represents a persistent set of properties. Can be saved to a stream or loaded from a stream.
+
+
+Implements Map (так как унаследован от HashTable). Но не рекмендуется пользоваться им через метод интерфейса Мап  (с дженериками плохо уточнили, так предполагается только Стринг\Стринг, а унаследован от Map<Object, Object>)
+(setProperty/getProperty method should be used instead)
+
+load(Reader) / store(Writer, String) / loadFromXML(InputStream) and storeToXML(OutputStream, String, String) методы для чтения\записи в поток. 
+Крайне не рекомендуется в этих файлах использование иных символов, кроме ASCII. Если нужны такие символы - то через юникод-коды.
+Документация к методу Load расказывает про это.
+
+Исторически сложившаяся кодировка: ISO 8859-1 character encoding. Теоретически можно попарить над преобразованием, но лучше избегать.
+
+
+Thread safe (так как унаследован от HashTable).  multiple threads can share a single Properties object 
+
+
+
+Пример:
+
+	Properties prop = new Properties();
+	prop.setProperty("dbhost", "localhost");
+	prop.setProperty("dbport", "5432");
+	prop.setProperty("dbuser", "mkyong");
+	prop.setProperty("dbpassword", "password");
+	
+	// save properties to project root folder
+	OutputStream output = new FileOutputStream("config.properties");
+	prop.store(output, null); //null - это про комментарии
+	
+	input = new FileInputStream("otherconfig.properties");
+	prop.load(input); //всё обновилось, перезаписалось
+	// get the property value and print it out
+	System.out.println(prop.getProperty("database"));
+	System.out.println(prop.getProperty("dbuser"));
+	System.out.println(prop.getProperty("dbpassword"));
+
+Часто делают так:
+Load a properties file from classpath.  Assume properties file “config.properties” is in your project classpath root folder.
+
+    	Properties prop = new Properties();
+    	InputStream input = null;
+    	String filename = "config.properties";
+    	input = AnyClass.class.getClassLoader().getResourceAsStream(filename);
+		//или   anyObject.getClass().getClassLoader().getResourceAsStream(filename);
+		if(input==null){
+				System.out.println("Sorry, unable to find " + filename);
+			return;
+		}
+
+
+Один из способов распечатать все пары\значения:
+		Enumeration<?> e = prop.propertyNames();
+		while (e.hasMoreElements()) {
+			String key = (String) e.nextElement();
+			String value = prop.getProperty(key);
+			System.out.println("Key : " + key + ", Value : " + value);
+		}
+
+		
+		
+//------------------------
+2. Resource Bundles:
+https://docs.oracle.com/javase/7/docs/api/java/util/ResourceBundle.html
+
+import java.util.Locale;
+import java.util.ResourceBundle;
+
+
+ ResourceBundle myResources = ResourceBundle.getBundle("MyResources", currentLocale);
+ String s = myResources.getString()
+
+
+Есть возможность по разному готовить эти ресурсбандлы и привязывать их к локалям. Хранить не только строки, но и объекты для разных локалей. 
+  int[] myIntegers = (int[]) myResources.getObject("intList");
+
+Но основной способ - через проперти файлы, один файл на локаль, через готовый класс PropertyResourceBundle
+
+     baseName + "_" + language + "_" + script + "_" + country + "_" + variant
+	 MyResource_en_Latn_US_WINDOWS_VISTA
+
+Пример копипастим отсюда:
+http://www.avajava.com/tutorials/lessons/how-do-i-use-locales-and-resource-bundles-to-internationalize-my-application.html
+
+
+
+Кроме того есть готовые тэги для JSP, которыми удобно переводить веб-страницы, используя информацию о локали из сессии:
+Пример тут:
+http://www.javable.com/javaworld/03_00/01/
+
