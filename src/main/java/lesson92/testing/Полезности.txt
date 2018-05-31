@@ -1,0 +1,47 @@
+Java 8  Streams
+	Date/Time
+	reference
+	лямбда
+JEE 	servlet/jsp
+	JPA/Mib
+	цикл жизни сервлета	
+
+Frontend Jquery
+
+ООП и шаблоны проектирования
+
+SQL/JDBC транзакции
+	 индексация
+	 нормализация
+
+Spring
+
+Maven
+
+Connection Pool
+
+Data source
+
+http client
+
+Json/Gson
+
+Cashe
+
+теория алгоритмов
+
+unit testing паттерн тестирования
+
+номер 1:
+связный список / массив
+бинарный поиск
+алгоритмы сортировки
+hash таблицы
+понятие хеширования в принципе
+Бинарное дерево
+
+
+https://jsehelper.blogspot.com/2016/01/blog-post_59.html
+http://www.quizful.net/interview/java
+http://javastudy.ru/interview/list-of-question-java-interview/
+https://habr.com/post/248865/
